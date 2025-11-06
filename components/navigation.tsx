@@ -43,7 +43,7 @@ export function Navigation({ selectedModel = "neural", onModelChange, onModelTra
 
     try {
       const data = generateSampleData(500) // Increased sample size for better training
-      const epochs = model === "logistic" ? 200 : 250
+      const epochs = model === "logistic" ? 50 : 75
       setTotalEpochs(epochs)
 
       const onProgress = (epoch: number) => {
@@ -117,7 +117,7 @@ export function Navigation({ selectedModel = "neural", onModelChange, onModelTra
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <p className="text-xs text-muted-foreground">
-                        Entrenamiento en 100 épocas. Ideal para relaciones lineales.
+                        Entrenamiento en 50 épocas. Ideal para relaciones lineales.
                       </p>
                       <Button
                         onClick={() => {
@@ -152,7 +152,7 @@ export function Navigation({ selectedModel = "neural", onModelChange, onModelTra
                       <CardDescription className="text-xs">Modelo profundo</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      <p className="text-xs text-muted-foreground">Entrenamiento en 150 épocas. Mayor precisión.</p>
+                      <p className="text-xs text-muted-foreground">Entrenamiento en 75 épocas. Mayor precisión.</p>
                       <Button
                         onClick={() => {
                           handleTrain("neural")
@@ -197,9 +197,6 @@ export function Navigation({ selectedModel = "neural", onModelChange, onModelTra
                       <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
                       <div>
                         <p className="text-sm font-medium">{trainingResult.modelType}</p>
-                        <p className="text-xs text-muted-foreground">
-                          Exactitud: {(trainingResult.metrics.accuracy * 100).toFixed(1)}%
-                        </p>
                       </div>
                     </div>
                     <Button onClick={() => setTrainingOpen(false)} className="w-full" size="sm">

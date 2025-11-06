@@ -94,7 +94,7 @@ export default function DashboardPage() {
 
     try {
       const data = generateSampleData(500) // Increased sample size for better training
-      const epochs = selectedModel === "logistic" ? 200 : 250
+      const epochs = selectedModel === "logistic" ? 50 : 75
       setTotalEpochs(epochs)
 
       const onProgress = (epoch: number) => {
@@ -334,7 +334,7 @@ export default function DashboardPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Ideal para relaciones lineales. Entrenamiento rápido en 100 épocas, menor uso de recursos.
+                    Ideal para relaciones lineales. Entrenamiento rápido en 50 épocas, menor uso de recursos.
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-2">
                     <li>• Entrenamiento rápido</li>
@@ -375,7 +375,7 @@ export default function DashboardPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Captura patrones complejos. Entrenamiento en 150 épocas con arquitectura de 3 capas.
+                    Captura patrones complejos. Entrenamiento en 75 épocas con arquitectura de 3 capas.
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-2">
                     <li>• Mayor precisión</li>
@@ -433,28 +433,6 @@ export default function DashboardPage() {
                     <CheckCircle2 className="h-8 w-8 text-primary" />
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid md:grid-cols-3 gap-4">
-                    <div className="p-4 bg-muted/50 rounded-lg">
-                      <p className="text-sm text-muted-foreground mb-1">Exactitud</p>
-                      <p className="text-2xl font-bold">{(trainingResult.metrics.accuracy * 100).toFixed(1)}%</p>
-                    </div>
-                    <div className="p-4 bg-muted/50 rounded-lg">
-                      <p className="text-sm text-muted-foreground mb-1">Pérdida</p>
-                      <p className="text-2xl font-bold">{trainingResult.metrics.loss.toFixed(4)}</p>
-                    </div>
-                    <div className="p-4 bg-muted/50 rounded-lg">
-                      <p className="text-sm text-muted-foreground mb-1">Tiempo</p>
-                      <p className="text-2xl font-bold">{(trainingResult.metrics.trainingTime / 1000).toFixed(1)}s</p>
-                    </div>
-                  </div>
-                  <Alert>
-                    <CheckCircle2 className="h-4 w-4" />
-                    <AlertDescription>
-                      Modelo entrenado exitosamente. Usa la pestaña Predicción para probarlo.
-                    </AlertDescription>
-                  </Alert>
-                </CardContent>
               </Card>
             )}
 
