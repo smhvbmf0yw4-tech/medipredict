@@ -246,11 +246,21 @@ export default function DashboardPage() {
         confidence: 0.7 + Math.random() * 0.25,
       }))
 
-      const confusionMatrix = [
-        [15, 2, 1],
-        [3, 18, 2],
-        [1, 2, 16],
-      ]
+      // Matriz de confusión balanceada: ~50 casos por enfermedad con diagonal dominante
+      // Varía según el modelo seleccionado
+      const confusionMatrix = selectedModel === "logistic" 
+        ? [
+            // Regresión Logística: ligeramente menos precisa
+            [44, 4, 2],   // Dengue: 44 correctos, 4 predichos como Malaria, 2 como Leptospirosis = 50 total
+            [5, 41, 4],   // Malaria: 5 predichos como Dengue, 41 correctos, 4 como Leptospirosis = 50 total
+            [4, 5, 41],   // Leptospirosis: 4 predichos como Dengue, 5 como Malaria, 41 correctos = 50 total
+          ]
+        : [
+            // Red Neuronal: más precisa (ejemplo del usuario)
+            [45, 3, 2],   // Dengue: 45 correctos, 3 predichos como Malaria, 2 como Leptospirosis = 50 total
+            [4, 42, 4],   // Malaria: 4 predichos como Dengue, 42 correctos, 4 como Leptospirosis = 50 total
+            [3, 5, 42],   // Leptospirosis: 3 predichos como Dengue, 5 como Malaria, 42 correctos = 50 total
+          ]
 
       const accuracy = 0.85 + Math.random() * 0.1
       const precision = 0.82 + Math.random() * 0.12

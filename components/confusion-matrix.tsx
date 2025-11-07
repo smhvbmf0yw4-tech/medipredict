@@ -3,7 +3,7 @@ interface ConfusionMatrixProps {
 }
 
 export function ConfusionMatrix({ matrix }: ConfusionMatrixProps) {
-  const classLabels = ["Clase 1", "Clase 2", "Clase 3"]
+  const classLabels = ["Dengue", "Malaria", "Leptospirosis"]
 
   return (
     <div className="space-y-6">
